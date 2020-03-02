@@ -3,9 +3,31 @@
 	.fontweight100{
 		font-weight: 100;
 	}
+	.question{
+		font-weight: bold;
+	}
+	.astuce{
+		font-size: 0.9em;
+		margin-top: -0.5em;
+	}
 </style>
 <link rel="stylesheet" href="https://frontend.esidoc.fr/libs/twitter-bootstrap/css/bootstrap.min.css" type="text/css"/>
 <link rel="stylesheet" href="https://backend.esidoc.fr/libs/font-awesome/css/font-awesome.min.css" type="text/css"/>
+<link rel="stylesheet" href="https://frontend.esidoc.fr/libs/pnotify/pnotify.css" type="text/css"/>
+<link rel="stylesheet" href="https://frontend.esidoc.fr/libs/pnotify/pnotify.buttons.css" type="text/css"/>
+<link rel="stylesheet" href="https://frontend.esidoc.fr/libs/pnotify/pnotify.mobile.css" type="text/css"/>
+<link rel="stylesheet" href="https://frontend.esidoc.fr/libs/pnotify/pnotify.nonblock.css" type="text/css"/>
+<!--
+<script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="widget/citation" src="https://frontend.esidoc.fr/js/esidoc/widget/citation.js?ver=acbc186d"></script>
+-->
+
+<script src="https://frontend.esidoc.fr/libs/pnotify/pnotify.buttons.js?ver=acbc186d"></script>
+<script src="https://frontend.esidoc.fr/libs/pnotify/pnotify.js?ver=acbc186d"></script>
+<script src="https://frontend.esidoc.fr/libs/pnotify/pnotify.mobile.js?ver=acbc186d"></script>
+<script src="https://frontend.esidoc.fr/libs/pnotify/pnotify.nonblock.js?ver=acbc186d"></script>
+
+
+
 La critique littéraire vise à <strong>relever les qualités et les défauts</strong> d’un livre.
 Faire une critique, c’est <strong>justifier de manière convaincante et personnelle son opinion</strong>. C’est aussi un moyen de <strong>partager son avis</strong> avec d’autres.
 <br><br>
@@ -14,16 +36,16 @@ En t'identifiant, via PCN, tu peux poster tes critiques sur les livres du CDI !
 <h2>I - Présentation du livre</h2>
 <br>
 <form name="titre">
-	<label for="txt_titre"><strong>Quel est le titre du livre ?</strong></label>
+	<label for="txt_titre"><div class="question">Quel est le titre du livre ?</div></label>
 	<input  id="txt_titre" type="text" class="form-control" placeholder="Titre du livre" /><br><br>
 
-	<label for="txt_auteur"><strong>Qui est l'auteur du livre ?</strong></label>
+	<label for="txt_auteur"><div class="question">Qui est l'auteur du livre ?</div></label>
 	<input  id="txt_auteur" type="text" class="form-control" placeholder="Nom de l'auteur" />
 	<br><br>
   </form>
   
 <form name="livre">
-	<strong>De quel type de livre s'agit-il ?</strong><br>
+	<div class="question">De quel type de livre s'agit-il ?</div>
 	<input type="radio" name="livre" id="livre1" class="form-check-input" value="un album" /><label class="form-check-label fontweight100" for="livre1">album</label>
 	<input type="radio" name="livre" id="livre2" class="form-check-input" value="une bande-dessinée" /><label class="form-check-label fontweight100" for="livre2">bandes-dessinées</label>
     <input type="radio" name="livre" id="livre3" class="form-check-input" value="un conte" /><label class="form-check-label fontweight100" for="livre3">conte</label> 
@@ -31,11 +53,21 @@ En t'identifiant, via PCN, tu peux poster tes critiques sur les livres du CDI !
 	<input type="radio" name="livre" id="livre5" class="form-check-input" value="une pièce de théâtre" /><label class="form-check-label fontweight100" for="livre5">théâtre</label>
 	<input type="radio" name="livre" id="livre6" class="form-check-input" value="un recueil de poésie" /><label class="form-check-label fontweight100" for="livre6">recueil de poésie</label>  
     <input type="radio" name="livre" id="livre7" class="form-check-input" value="un roman" /><label class="form-check-label fontweight100" for="livre7">roman</label>
+
+    <select class="form-control">
+    	<option value="un album">album</option>
+    	<option value="une bandes-dessinées">bandes-dessinées</option>
+    	<option value="un conte">conte</option>
+    	<option value="un manga">manga</option>
+    	<option value="une pièce de théâtre">théâtre</option>
+    	<option value="un recueil de poésie">recueil de poésie</option>
+    	<option value="un roman">roman</option>
+    </select>
 	<br><br>
   </form>
   
 <form name="genre">
-	<strong>Quel est le genre de fiction ?</strong><br>
+	<div class="question">Quel est le genre de fiction ?</div>
 	<input type="radio" name="genre" value="animalier" />animalier    
 	<input type="radio" name="genre" value="d'amour" />amour    
     <input type="radio" name="genre" value="d'aventure" />aventure    
@@ -52,7 +84,7 @@ En t'identifiant, via PCN, tu peux poster tes critiques sur les livres du CDI !
 	<br><br>
 </form>
 <form name="theme">
-<strong>Quel est le thème principal du livre ?</strong><br>
+<div class="question">Quel est le thème principal du livre ?</div>
 	<input type="radio" name="theme" value="d'amitié" />l'amitié    
 	<input type="radio" name="theme" value="d'amour" />l'amour    
     <input type="radio" name="theme" value="des différences" />les différences    
@@ -70,8 +102,8 @@ En t'identifiant, via PCN, tu peux poster tes critiques sur les livres du CDI !
 	<br><br>
 </form>
 <form name="resume">
-	<label for="txt_resume"><strong>Résume l'histoire en une ou deux phrases.</strong></label><br>
-	<small class="form-text text-muted">Pense à répondre aux questions QUI?, QUOI?, POURQUOI?, QUAND et OÙ?, quand c'est précisé dans l'histoire.</small>
+	<label for="txt_resume"><div class="question">Résume l'histoire en une ou deux phrases.</div></label>
+	<div class="form-text text-muted astuce">Pense à répondre aux questions QUI ?, QUOI ?, POURQUOI ?, QUAND ? et OÙ ?, quand c'est précisé dans l'histoire.</div>
 	<textarea cols="65" rows="2" id="txt_resume" class="form-control"></textarea>
 	<br><br>
  </form>
@@ -81,7 +113,7 @@ En t'identifiant, via PCN, tu peux poster tes critiques sur les livres du CDI !
 <br>
  
  <form name="emotion">
-<strong>Qu'as-tu ressenti à la lecture ?</strong><br>
+<div class="question">Qu'as-tu ressenti à la lecture ?</div>
     <input type="radio" name="emotion" value="effrayante" />de la peur    
 	<input type="radio" name="emotion" value="joyeuse" />de la joie    
     <input type="radio" name="emotion" value="enrageante" />de la colère    
@@ -89,14 +121,14 @@ En t'identifiant, via PCN, tu peux poster tes critiques sur les livres du CDI !
 	<br><br>
 </form>
 <form name="justifemo">
-	<label for="txt_justifemo"><strong>Pourquoi as-tu ressenti cette émotion ?</strong></label><br>
-	<small class="form-text text-muted">Continue la phrase : car&hellip;</small>
-	<textarea cols="65" rows="2" id="txt_justifemo" class="form-control">car</textarea>
+	<label for="txt_justifemo"><div class="question">Pourquoi as-tu ressenti cette émotion ?</div></label>
+	<div class="form-text text-muted astuce">Continue la phrase : car&hellip;</div>
+	<textarea cols="65" rows="2" id="txt_justifemo" class="form-control">car </textarea>
 	<br><br>
  </form>
  
  <form name="avis">
-	<strong>Quel est ton avis sur ce livre ?</strong><br>
+	<div class="question">Quel est ton avis sur ce livre ?</div>
 	<input type="radio" name="avis" value="J'ai détesté" />★☆☆☆☆    
 	<input type="radio" name="avis" value="Je n'ai pas aimé" />★★☆☆☆    
     <input type="radio" name="avis" value="J'ai aimé" />★★★☆☆    
@@ -105,7 +137,7 @@ En t'identifiant, via PCN, tu peux poster tes critiques sur les livres du CDI !
 	<br><br>
 </form>
 <form name="histoire">
-	<strong>Comment peux-tu qualifier l'histoire ?</strong><br>
+	<div class="question">Comment peux-tu qualifier l'histoire ?</div>
 	<input type="radio" name="histoire" value="pleine d'actions" />pleine d'actions    
 	<input type="radio" name="histoire" value="captivante" />captivante    
 	<input type="radio" name="histoire" value="confuse" />confuse (difficile à comprendre)<br>
@@ -127,7 +159,7 @@ En t'identifiant, via PCN, tu peux poster tes critiques sur les livres du CDI !
   </form>
   
 <form name="ecriture">
-<strong>Que penses-tu de la façon dont est écrite l'histoire ?</strong><br>
+<div class="question">Que penses-tu de la façon dont est écrite l'histoire ?</div><br>
 	<input type="radio" name="ecriture" value="court" />peu de pages    
 	<input type="radio" name="ecriture" value="aux nombreuses pages" />beaucoup de pages    
     <input type="radio" name="ecriture" value="au vocabulaire difficile à comprendre" />vocabulaire compliqué<br>
@@ -139,7 +171,7 @@ En t'identifiant, via PCN, tu peux poster tes critiques sur les livres du CDI !
 </form>
   
 <form name="recommandation">
-<strong>Recommanderais-tu ce livre ?</strong><br>
+<div class="question">Recommanderais-tu ce livre ?</div><br>
 	<input type="radio" name="recommandation" value="est un chef d'oeuvre !" />un chef d'oeuvre !    
 	<input type="radio" name="recommandation" value="est à ne pas rater !" />à ne pas rater !    
     <input type="radio" name="recommandation" value="est à lire absolument" />à lire absolument !<br>
@@ -189,14 +221,10 @@ En t'identifiant, via PCN, tu peux poster tes critiques sur les livres du CDI !
 	<textarea id="order" cols="65" rows="10" readonly class="form-control"></textarea>
 </form>
 
-<button type="button" class="btn btn-default citation-copy">
-        <i class="fa fa-copy" aria-hidden="true"></i>
-        Copier le texte
-    </button>
-<button type="button" class="btn btn-default citation-print">
-        <i class="fa fa-print" aria-hidden="true"></i>
-        Imprimer le texte
-    </button>
+<button type="button" class="btn btn-default citation-copy" onclick="copy()">
+	<i class="fa fa-copy" aria-hidden="true"></i> Copier le texte
+</button>
+
 
 <script type="text/javascript">// <![CDATA[
 function getMyValue(myValue){
@@ -223,4 +251,17 @@ var txt_recomm=getMyValue("recommandation");
 
   document.getElementById("order").value = document.getElementById("txt_titre").value + ", écrit par " + document.getElementById("txt_auteur").value + ", est " + txt_livre + txt_genre + "qui parle " + txt_theme + ". " + document.getElementById("txt_resume").value + " L'histoire est " + txt_emotion + " " + document.getElementById("txt_justifemo").value + ". " + txt_avis + " lire ce livre, car j'ai trouvé l'histoire " + txt_qualifhist + ". Ce livre " + txt_ecriture + " " + txt_recomm ;
 }
+
+
+function copy() {
+    var copyText = document.querySelector("#order");
+    copyText.select();
+    document.execCommand("copy");
+    alert("C'est copié !");
+    PNotify.defaults.styling = 'bootstrap3'; // Bootstrap version 3
+	PNotify.defaults.icons = 'bootstrap3'; // glyphicons
+    PNotify.alert('Notice me, senpai!');
+}
+
+//document.querySelector("#copy").addEventListener("click", copy);
 // ]]></script>
