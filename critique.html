@@ -10,6 +10,9 @@
 		font-size: 0.9em;
 		margin-top: -0.5em;
 	}
+	.chapitre{
+		margin-top: 2em;
+	}
 </style>
 <link rel="stylesheet" href="https://frontend.esidoc.fr/libs/twitter-bootstrap/css/bootstrap.min.css" type="text/css"/>
 <link rel="stylesheet" href="https://backend.esidoc.fr/libs/font-awesome/css/font-awesome.min.css" type="text/css"/>
@@ -21,18 +24,13 @@
 <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="widget/citation" src="https://frontend.esidoc.fr/js/esidoc/widget/citation.js?ver=acbc186d"></script>
 -->
 
-<script src="https://frontend.esidoc.fr/libs/pnotify/pnotify.buttons.js?ver=acbc186d"></script>
-<script src="https://frontend.esidoc.fr/libs/pnotify/pnotify.js?ver=acbc186d"></script>
-<script src="https://frontend.esidoc.fr/libs/pnotify/pnotify.mobile.js?ver=acbc186d"></script>
-<script src="https://frontend.esidoc.fr/libs/pnotify/pnotify.nonblock.js?ver=acbc186d"></script>
 
 
+<p>La critique littéraire vise à <strong>relever les qualités et les défauts</strong> d’un livre.
+Faire une critique, c’est <strong>justifier de manière convaincante et personnelle son opinion</strong>. C’est aussi un moyen de <strong>partager son avis</strong> avec d’autres.</p>
+<p>En t'identifiant, via PCN, tu peux poster tes critiques sur les livres du CDI !</p>
 
-La critique littéraire vise à <strong>relever les qualités et les défauts</strong> d’un livre.
-Faire une critique, c’est <strong>justifier de manière convaincante et personnelle son opinion</strong>. C’est aussi un moyen de <strong>partager son avis</strong> avec d’autres.
-<br><br>
-En t'identifiant, via PCN, tu peux poster tes critiques sur les livres du CDI !
-	<br><br>
+<div class="container-fluid chapitre">
 <h2>I - Présentation du livre</h2>
 <br>
 <form name="titre">
@@ -105,10 +103,10 @@ En t'identifiant, via PCN, tu peux poster tes critiques sur les livres du CDI !
 	<label for="txt_resume"><div class="question">Résume l'histoire en une ou deux phrases.</div></label>
 	<div class="form-text text-muted astuce">Pense à répondre aux questions QUI ?, QUOI ?, POURQUOI ?, QUAND ? et OÙ ?, quand c'est précisé dans l'histoire.</div>
 	<textarea cols="65" rows="2" id="txt_resume" class="form-control"></textarea>
-	<br><br>
  </form>
- 
-	<br>
+ </div>
+
+<div class="container-fluid chapitre">
 <h2>II - Avis argumenté</h2>
 <br>
  
@@ -203,10 +201,8 @@ En t'identifiant, via PCN, tu peux poster tes critiques sur les livres du CDI !
   		<span aria-hidden="true"><i class="fa fa-undo"></i> Rétablir les valeurs par defaut</span>
     </button>
 
-
-  <br><br><br>
-  
-<br>
+</div>
+<div class="container-fluid chapitre">
 <h2>III - Personnalisation</h2>
 <br>
 
@@ -224,7 +220,7 @@ En t'identifiant, via PCN, tu peux poster tes critiques sur les livres du CDI !
 <button type="button" class="btn btn-default citation-copy" onclick="copy()">
 	<i class="fa fa-copy" aria-hidden="true"></i> Copier le texte
 </button>
-
+</div>
 
 <script type="text/javascript">// <![CDATA[
 function getMyValue(myValue){
@@ -258,9 +254,6 @@ function copy() {
     copyText.select();
     document.execCommand("copy");
     alert("C'est copié !");
-    PNotify.defaults.styling = 'bootstrap3'; // Bootstrap version 3
-	PNotify.defaults.icons = 'bootstrap3'; // glyphicons
-    PNotify.alert('Notice me, senpai!');
 }
 
 //document.querySelector("#copy").addEventListener("click", copy);
