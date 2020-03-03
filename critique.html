@@ -16,7 +16,8 @@
 			}
 			.astuce{
 				font-size: 0.9em;
-				margin-top: -0.5em;
+				margin-top: -0.25em;
+				font-weight: 100;
 			}
 			.chapitre{
 				margin-top: 2em;
@@ -24,20 +25,49 @@
 			#critique{
 				margin-bottom: 20px;
 			}
-		</style>
-		<link rel="stylesheet" href="https://frontend.esidoc.fr/libs/twitter-bootstrap/css/bootstrap.min.css" type="text/css"/>
-		<link rel="stylesheet" href="https://backend.esidoc.fr/libs/font-awesome/css/font-awesome.min.css" type="text/css"/>
-		<link rel="stylesheet" href="https://frontend.esidoc.fr/css/all.min.css" type="text/css"/>
-		<link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
 
+			/* Rating Star Widgets Style */
+			.rating-stars ul {
+			  list-style-type:none;
+			  padding:0;
+			  
+			  -moz-user-select:none;
+			  -webkit-user-select:none;
+			}
+			.rating-stars ul > li.star {
+			  display:inline-block;
+			  
+			}
+
+			/* Idle State of the stars */
+			.rating-stars ul > li.star > i.fa {
+			  font-size:1.5em; /* Change the size of the stars */
+			  color:#ccc; /* Color on idle state */
+			}
+
+			/* Hover state of the stars */
+			.rating-stars ul > li.star.hover > i.fa {
+			  color:#FFCC36;
+			}
+
+			/* Selected state of the stars */
+			.rating-stars ul > li.star.selected > i.fa {
+			  color:#FF912C;
+			}
+			
+		</style>
+
+		<link rel="stylesheet" href="https://frontend.esidoc.fr/libs/twitter-bootstrap/css/bootstrap.min.css" type="text/css">
+		<link rel="stylesheet" href="https://backend.esidoc.fr/libs/font-awesome/css/font-awesome.min.css" type="text/css">
+		<link rel="stylesheet" href="https://frontend.esidoc.fr/css/all.min.css" type="text/css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css">
+		
 		<script src="https://frontend.esidoc.fr/libs/jquery/jquery.min.js?ver=1583172060000"></script>
-		<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 		<script src="https://frontend.esidoc.fr/libs/twitter-bootstrap/js/bootstrap.min.js?ver=acbc186d"></script>
+		<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/i18n/fr.js"></script>
 		
-		
-		<!--
-		<script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="widget/citation" src="https://frontend.esidoc.fr/js/esidoc/widget/citation.js?ver=acbc186d"></script>
-		-->
+
 	</head>
 	<body>
 		<article>
@@ -79,7 +109,7 @@
 				<div class="row question-bloc">
 					<label for="genre">
 						<div class="question-titre">Quel est le genre de fiction ?</div>
-					    <select id="genre" class="form-control select2-multiple" title="Tu peux écrire un autre genre si il n'est pas dans la liste" data-toggle="tooltip" data-placement="right" multiple>
+					    <select id="genre" class="form-control select2-multiple" data-tooltips="Tu peux écrire un autre genre si il n'est pas dans la liste" data-toggle="tooltip" data-placement="right" multiple>
 					    	<option value="animalier">animalier</option>
 					    	<option value="amour">amour</option>
 					    	<option value="biographique">biographique</option>
@@ -98,7 +128,7 @@
 				<div class="row question-bloc">
 					<label for="theme">
 						<div class="question-titre">Quel est le thème de fiction ?</div>
-					    <select id="theme" class="form-control select2-multiple" title="Tu peux écrire un autre thème si il n'est pas dans la liste" data-toggle="tooltip" data-placement="right" multiple>
+					    <select id="theme" class="form-control select2-multiple" data-tooltips="Tu peux écrire un autre thème si il n'est pas dans la liste" data-toggle="tooltip" data-placement="right" multiple>
 					    	<option value="d'amitié">l'amitié </option>
 					    	<option value="d'amour">l'amour</option>
 					    	<option value="des différences">les différences </option>
@@ -142,43 +172,66 @@
 					</label>
 				</div>
 
-				<form name="justifemo">
-					<label for="txt_justifemo"><div class="question-titre">Pourquoi as-tu ressenti cette émotion ?</div></label>
-					<div class="form-text text-muted astuce">Continue la phrase : car&hellip;</div>
-					<textarea cols="65" rows="2" id="txt_justifemo" class="form-control">car </textarea>
-					<br><br>
-				 </form>
+				<div class="row question-bloc">
+					<label for="txt_justifemo">
+						<div class="question-titre">Pourquoi as-tu ressenti cette émotion ?</div>
+						<div class="form-text text-muted astuce">Continue la phrase : car&hellip;</div>
+					</label>
+					<textarea rows="3" id="txt_justifemo" class="form-control">car </textarea>
+				</div>
 				 
-				 <form name="avis">
-					<div class="question-titre">Quel est ton avis sur ce livre ?</div>
-					<input type="radio" name="avis" value="J'ai détesté" /><i class="fa fa-star"></i><i class="fa fa-star-o"></i>☆☆☆    
-					<input type="radio" name="avis" value="Je n'ai pas aimé" />★★☆☆☆    
-				    <input type="radio" name="avis" value="J'ai aimé" />★★★☆☆    
-					<input type="radio" name="avis" value="J'ai beaucoup aimé" />★★★★☆    
-					<input type="radio" name="avis" value="J'ai adoré" />★★★★★    
-					<br><br>
-				</form>
-				<form name="histoire">
-					<div class="question-titre">Comment peux-tu qualifier l'histoire ?</div>
-					<input type="radio" name="histoire" value="pleine d'actions" />pleine d'actions    
-					<input type="radio" name="histoire" value="captivante" />captivante    
-					<input type="radio" name="histoire" value="confuse" />confuse (difficile à comprendre)<br>
-					<input type="radio" name="histoire" value="dépaysante" />dépaysante    
-					<input type="radio" name="histoire" value="drôle" />drôle    
-				    <input type="radio" name="histoire" value="émouvante" />émouvante    
-					<input type="radio" name="histoire" value="ennuyeuse" />ennuyeuse    
-					<input type="radio" name="histoire" value="instructive" />instructive<br>
-					<input type="radio" name="histoire" value="intrigante" />intrigante    
-					<input type="radio" name="histoire" value="originale" />originale    
-					<input type="radio" name="histoire" value="pathétique" />pathétique    
-				    <input type="radio" name="histoire" value="poétique" />poétique    
-				    <input type="radio" name="histoire" value="réaliste" />réaliste<br>
-					<input type="radio" name="histoire" value="révoltante" />révoltante    
-					<input type="radio" name="histoire" value="surprenante" />surprenante    
-					<input type="radio" name="histoire" value="pleine de suspense" />pleine de suspense<br>
-					<input type="radio" name="histoire" value="[précisions sur la façon dont tu qualifierais l'histoire]" />autre [à préciser dans la critique]
-					<br><br>
-				  </form>
+
+				<div class="row question-bloc">
+					<label for="stars">
+						<div class="question-titre">Quel est ton avis sur ce livre ?</div>
+					</label>
+					
+					<!-- Rating Stars Box -->
+				    <div class='rating-stars'>
+				        <ul id='stars'>
+				            <li class='star' data-title="J'ai détesté" data-value='1'>
+				                <i class='fa fa-star fa-fw'></i>
+				            </li>
+					        <li class='star' data-title="Je n'ai pas aimé" data-value='2'>
+					            <i class='fa fa-star fa-fw'></i>
+					        </li>
+					        <li class='star' data-title="J'ai aimé" data-value='3'>
+					            <i class='fa fa-star fa-fw'></i>
+					        </li>
+					        <li class='star' data-title="J'ai beaucoup aimé" data-value='4'>
+					            <i class='fa fa-star fa-fw'></i>
+					        </li>
+					        <li class='star' data-title="J'ai adoré" data-value='5'>
+					            <i class='fa fa-star fa-fw'></i>
+					        </li>
+				        </ul>
+				    </div>
+				</div>
+
+				<div class="row question-bloc">
+					<label for="histoire">
+						<div class="question-titre">Comment peux-tu qualifier l'histoire ?</div>
+					    <select id="histoire" class="form-control select2-multiple" data-tooltips="Tu peux écrire un autre qualificatif si il n'est pas dans la liste" data-toggle="tooltip" data-placement="right" multiple>
+					    	<option value="pleine d'actions">pleine d'actions</option>
+					    	<option value="captivante">captivante</option>
+					    	<option value="confuse">confuse (difficile à comprendre)</option>
+					    	<option value="dépaysante">dépaysante</option>
+					    	<option value="drôle">drôle</option>
+					    	<option value="émouvante">émouvante</option>
+					    	<option value="ennuyeuse">ennuyeuse</option>
+					    	<option value="instructive">instructive</option>
+					    	<option value="intrigante">intrigante</option>
+					    	<option value="originale">originale</option>
+					    	<option value="pathétique">pathétique</option>
+					    	<option value="poétique">poétique</option>
+					    	<option value="réaliste">réaliste</option>
+					    	<option value="révoltante">révoltante</option>
+					    	<option value="surprenante">surprenante</option>
+					    	<option value="pleine de suspense">pleine de suspense</option>
+					    </select>
+					</label>
+				</div>
+
 				  
 				<form name="ecriture">
 				<div class="question-titre">Que penses-tu de la façon dont est écrite l'histoire ?</div>
@@ -279,16 +332,22 @@
 		}
 
 		function raz(){
-			$("#generateur-critique")[0].reset(); //reset form, ne semble fonctionner que sur les inputs
-			$('textarea').val(null); //reset les textarea
-			$('.select2-single').val(null).trigger('change');// reset select simple
-			$('.select2-multiple').val(null).trigger('change');// reset select multiple
+			$('input').val(null); //reset les zones de saisie
+			$('textarea').val(null); //reset les zones de texte
+			$('.select2-single').val(null).trigger('change'); //reset les listes de selection simple
+			$('.select2-multiple').val(null).trigger('change'); //reset les listes de selection multiple
+
+			//reset les étoiles
+			var stars = $("#stars").children('li.star');
+		    for (i = 0; i < stars.length; i++) {
+		      $(stars[i]).removeClass('selected');
+		    }
 		}
 
 		function copy(){
 		    document.querySelector("#critique").select();
 		    document.execCommand("copy");
-		    $("#copy-alert").show();
+		    $("#copy-alert").fadeIn(200); //affiche l'alert texte copié
 		}
 
 		$('#copy-close').on('click', function() {
@@ -296,15 +355,15 @@
 		});
 
 		$("#generer").click(function(){
-		  myCritic();
+		    myCritic();
 		});
 
 		$("#reset").click(function(){
-		  raz();
+		    raz();
 		});
 
 		$("#copy").click(function(){
-		  copy();
+		    copy();
 		});
 
 		$(document).ready(function() {
@@ -313,25 +372,88 @@
 
 			//liste de sélection simple
 		    $('.select2-single').select2({
-			  placeholder: 'Choisis une option'
+		        language: "fr",
+			    placeholder: 'Choisis une option'
 			});
 
 			//liste de sélection multiple
 			$('.select2-multiple').select2({
-			  tags: true,
-			  width: 'resolve',
-			  allowClear: true,
-			  placeholder: 'Choisis une ou plusieurs options'
+				language: "fr",
+			    tags: true,
+			    width: 'resolve',
+			    allowClear: true,
+			    placeholder: 'Choisis une ou plusieurs options'
 			});
 
 			//ajout des tooltips pour les listes de sélections
 			$(".select2-container").tooltip({
 		    title: function() {
-		        return $(this).prev().attr("title");
+		        return $(this).prev().attr("data-tooltips");
 		    },
 		    placement: "right"
 			});
 		});
+
+
+		/* Rating star widget */
+		$(document).ready(function(){
+  
+		  /* 1. Visualizing things on Hover - See next part for action on click */
+		  $('#stars li').on('mouseover', function(){
+		    var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
+		   
+		    // Now highlight all the stars that's not after the current hovered star
+		    $(this).parent().children('li.star').each(function(e){
+		      if (e < onStar) {
+		        $(this).addClass('hover');
+		      }
+		      else {
+		        $(this).removeClass('hover');
+		      }
+		    });
+		    
+		  }).on('mouseout', function(){
+		    $(this).parent().children('li.star').each(function(e){
+		      $(this).removeClass('hover');
+		    });
+		  });
+		  
+		  
+		  /* 2. Action to perform on click */
+		  $('#stars li').on('click', function(){
+		    var onStar = parseInt($(this).data('value'), 10); // The star currently selected
+		    var stars = $(this).parent().children('li.star');
+		    
+		    for (i = 0; i < stars.length; i++) {
+		      $(stars[i]).removeClass('selected');
+		    }
+		    
+		    for (i = 0; i < onStar; i++) {
+		      $(stars[i]).addClass('selected');
+		    }
+		    
+		    // JUST RESPONSE (Not needed)
+		    var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
+		    alert($('#stars li.selected').last().data('title'));
+		    var msg = "";
+		    if (ratingValue > 1) {
+		        msg = "Thanks! You rated this " + ratingValue + " stars.";
+		    }
+		    else {
+		        msg = "We will improve ourselves. You rated this " + ratingValue + " stars.";
+		    }
+		    responseMessage(msg);
+		    
+		  });
+		  
+		  
+		});
+
+
+		function responseMessage(msg) {
+		  $('.success-box').fadeIn(200);  
+		  //$('.success-box div.text-message').html("<span>" + msg + "</span>");
+		}
 
 	</script>
 </body>
